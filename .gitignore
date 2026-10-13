@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.prerender/
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# TypeScript incremental build artifacts
+*.tsbuildinfo
+
+# Freebuff workspace state
+.freebuff/
+
+# Editor/OS
+.DS_Store
+*.local

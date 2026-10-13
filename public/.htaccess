@@ -1,0 +1,37 @@
+# SnapKit — Apache configuration for shared hosting (InfinityFree / 42web.io)
+#
+# Every route is prerendered into a real directory with its own index.html,
+# so no front-controller rewrite is needed. Apache's DirectorySlash handles
+# /page -> /page/ (301) and unknown paths fall through to ErrorDocument below,
+# which returns a genuine HTTP 404 with our custom page.
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# Canonical trailing slash: avoid serving /page (no slash) as a separate URL.
+<IfModule mod_dir.c>
+  DirectorySlash On
+</IfModule>
+
+# Redirect accidental duplicate slashes to the clean URL.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} //(.+)$
+  RewriteRule ^ /%1 [R=301,L]
+</IfModule>
+
+# Caching: hashed build assets are immutable, HTML always revalidates.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 day"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>

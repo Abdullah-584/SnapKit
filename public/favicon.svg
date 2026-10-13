@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="SnapKit">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#g)"/>
+  <path d="M27.5 8.5 13 26.8h9.4L20 39.5 35 20.8h-9.6l2.1-12.3Z" fill="#ffffff"/>
+  <circle cx="36.5" cy="11.5" r="2.6" fill="#ffffff" opacity="0.85"/>
+</svg>

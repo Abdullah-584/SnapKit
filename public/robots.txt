@@ -1,0 +1,8 @@
+# SnapKit robots.txt — do not block tools, guides or assets.
+User-agent: *
+Allow: /
+
+# Known non-indexable helper page (also marked noindex in its meta).
+Disallow: /__404__/
+
+Sitemap: https://snapkit.42web.io/sitemap.xml
